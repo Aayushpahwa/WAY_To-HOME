@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews - Way to Home</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Header and Footer */
+    header, footer {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: relative;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    footer {
+      margin-top: 30px;
+    }
+
+    /* Animation for header and footer */
+    @keyframes slideIn {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Review Section */
+    .reviews-section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+
+    .review-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .review-header h3 {
+      margin: 0;
+    }
+
+    .review-date {
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    /* Star rating */
+    .stars {
+      color: gold;
+    }
+
+    .stars.empty {
+      color: #ddd;
+    }
+
+    /* Review text */
+    .review-text {
+      font-size: 1em;
+      color: #333;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Customer Reviews - Way to Home</h1>
+  </header>
+
+  <div class="reviews-section">
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Jane Doe</h3>
+        <div class="review-date">April 25, 2025</div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star empty">★</span>
+      </div>
+      <p class="review-text">"Way to Home made my moving experience so much easier. The team was professional and fast, and everything arrived safely. Highly recommend!"</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>John Smith</h3>
+        <div class="review-date">April 22, 2025</div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star empty">★</span>
+        <span class="star empty">★</span>
+      </div>
+      <p class="review-text">"Overall a decent service, but there were some delays in delivery. Customer service was helpful, though. Could be better with communication."</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h3>Sarah Lee</h3>
+        <div class="review-date">April 20, 2025</div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+        <span class="star filled">★</span>
+      </div>
+      <p class="review-text">"Amazing service! Everything was on time, and the team handled everything with care. I’ll definitely use them again for my next move."</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Way to Home. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        let rating = Array.from(stars).indexOf(star) + 1;
+        updateStars(rating);
+      });
+    });
+
+    function updateStars(rating) {
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('filled');
+          star.classList.remove('empty');
+        } else {
+          star.classList.remove('filled');
+          star.classList.add('empty');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
