@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Way To Home - Find Your Perfect Stay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #006ce4;
+            --secondary-color: #f0f3f5;
+            --accent-color: #ff8000;
+            --text-color: #333;
+            --light-text: #6b6b6b;
+            --white: #fff;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--text-color);
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            padding: 16px 40px;
+            color: var(--white);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links .register {
+            border: 1px solid var(--white);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 78, 146, 0.7), rgba(0, 78, 146, 0.7)), url('https://r-xx.bstatic.com/xdata/images/xphoto/2880x868/347684177.jpeg?k=0e9ab593f30c89b4d3a83d5fb5306b464a5ac4c93ff3d3ca7221db3347c5287d&o=');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 40px;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 16px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .search-container {
+            background-color: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+        
+        .search-input input, .search-input select {
+            width: 100%;
+            padding: 16px 16px 16px 45px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .search-input i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+        
+        .date-picker {
+            display: flex;
+            gap: 5px;
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .date-input {
+            flex: 1;
+            position: relative;
+        }
+        
+        .guests {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .search-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 0 24px;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: #e67300;
+        }
+        
+        .offers {
+            padding: 60px 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .offer-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .offer-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .offer-content {
+            padding: 16px;
+        }
+        
+        .offer-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .offer-location {
+            color: var(--light-text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .offer-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .destinations {
+            background-color: var(--secondary-color);
+            padding: 60px 40px;
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .destination-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .destination-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .destination-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--white);
+        }
+        
+        .destination-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .destination-properties {
+            font-size: 14px;
+        }
+        
+        .features {
+            padding: 60px 40px;
+            background-color: var(--white);
+        }
+        
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            text-align: center;
+            max-width: 250px;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            color: var(--light-text);
+            line-height: 1.5;
+        }
+        
+        .app-banner {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .banner-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .banner-title {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        
+        .store-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .store-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .app-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+        
+        .app-image img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        
+        .subscribe {
+            padding: 60px 40px;
+            text-align: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .subscribe-form {
+            max-width: 600px;
+            margin: 32px auto 0;
+            display: flex;
+            gap: 16px;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .subscribe-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .subscribe-btn:hover {
+            background-color: #0055b3;
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: var(--white);
+            padding: 60px 40px 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #ccc;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 16px 20px;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .offers, .destinations, .features, .subscribe, .footer {
+                padding: 40px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .search-btn {
+                width: 100%;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Way To Home</div>
+            <div class="nav-links">
+                <a href="#"><i class="fas fa-bed"></i> Stays</a>
+                <a href="#"><i class="fas fa-plane"></i> Flights</a>
+                <a href="#"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="#"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="#"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#">USD</a>
+                <a href="#">Sign in</a>
+                <a href="#" class="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find your next stay</h1>
+        <p>Search deals on hotels, homes, and much more...</p>
+        
+        <div class="search-container">
+            <form class="search-form">
+                <div class="search-input">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" placeholder="Where are you going?">
+                </div>
+                <div class="date-picker">
+                    <div class="date-input">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="text" placeholder="Check-in date">
+                    </div>
+                    <div class="date-input">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="text" placeholder="Check-out date">
+                    </div>
+                </div>
+                <div class="guests">
+                    <i class="fas fa-user-friends"></i>
+                    <select>
+                        <option value="">2 adults · 0 children · 1 room</option>
+                        <option value="">1 adult · 0 children · 1 room</option>
+                        <option value="">2 adults · 1 child · 1 room</option>
+                        <option value="">2 adults · 2 children · 1 room</option>
+                        <option value="">2 adults · 0 children · 2 rooms</option>
+                    </select>
+                </div>
+                <button class="search-btn">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="offers">
+        <h2 class="section-title">Offers</h2>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max500/74529578.jpg?k=a7fcefd47d7271daf44f6ce78a215b9505f9f8e5cac3af093b78b9c489fd8603&o=" alt="Hotel" class="offer-img">
+                <div class="offer-content">
+                    <h3 class="offer-title">Seaside Resort & Spa</h3>
+                    <div class="offer-location"><i class="fas fa-map-marker-alt"></i> Miami, United States</div>
+                    <div class="offer-price">From $120 / night</div>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max500/40890546.jpg?k=95e71122215c2eef9fd8797c119e85a861ae45b64e9a8e561499a8545218ce90&o=" alt="Hotel" class="offer-img">
+                <div class="offer-content">
+                    <h3 class="offer-title">Mountain View Lodge</h3>
+                    <div class="offer-location"><i class="fas fa-map-marker-alt"></i> Aspen, United States</div>
+                    <div class="offer-price">From $180 / night</div>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max500/103951224.jpg?k=03736dd4e1e89c1132e4957e735e33e7f6b0c9f694ce80cf51aa5307c4df1eda&o=" alt="Hotel" class="offer-img">
+                <div class="offer-content">
+                    <h3 class="offer-title">Urban Boutique Hotel</h3>
+                    <div class="offer-location"><i class="fas fa-map-marker-alt"></i> New York, United States</div>
+                    <div class="offer-price">From $150 / night</div>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max500/74594395.jpg?k=d5a71c0578774c302d2b8854482beaa8785077c616f5afd21c9db8a6eab6234e&o=" alt="Hotel" class="offer-img">
+                <div class="offer-content">
+                    <h3 class="offer-title">Paradise Island Resort</h3>
+                    <div class="offer-location"><i class="fas fa-map-marker-alt"></i> Maldives</div>
+                    <div class="offer-price">From $300 / night</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations">
+        <h2 class="section-title">Popular destinations</h2>
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="https://cf.bstatic.com/xdata/images/city/540x270/349720.jpg?k=b7eca2cb90afd858f294732b0d5c194af47e70386d041f5c72dd2db981c73c36&o=" alt="Paris" class="destination-img">
+                <div class="destination-overlay">
+                    <div class="destination-name">Paris</div>
+                    <div class="destination-properties">2,340 properties</div>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://cf.bstatic.com/xdata/images/city/540x270/856674.jpg?k=70a9589c2f7d2fc175c3ac02c55305c23a70ai766e2708d2e439d4fcdfe9df78&o=" alt="New York" class="destination-img">
+                <div class="destination-overlay">
+                    <div class="destination-name">New York</div>
+                    <div class="destination-properties">1,890 properties</div>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://cf.bstatic.com/xdata/images/city/540x270/620103.jpg?k=c2f3d1535f55f5e19aa8f3538eb5108bcf399a61d04f4a57f3cffbd7d571398c&o=" alt="London" class="destination-img">
+                <div class="destination-overlay">
+                    <div class="destination-name">London</div>
+                    <div class="destination-properties">3,120 properties</div>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://cf.bstatic.com/xdata/images/city/540x270/685524.jpg?k=7b4b9bf28f753e1c9c2e8fc7139fe00a5e1f8db67ce5836dca39cb3a8e7d28bd&o=" alt="Rome" class="destination-img">
+                <div class="destination-overlay">
+                    <div class="destination-name">Rome</div>
+                    <div class="destination-properties">2,780 properties</div>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://cf.bstatic.com/xdata/images/city/540x270/971346.jpg?k=40eeb583a755f2835f4dcb6900cdeba2a46dc9d50e64f2aa04206f5f6fce5671&o=" alt="Dubai" class="destination-img">
+                <div class="destination-overlay">
+                    <div class="destination-name">Dubai</div>
+                    <div class="destination-properties">1,456 properties</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Why choose Way To Home?</h2>
+        <div class="feature-container">
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <h3 class="feature-title">Worldwide Coverage</h3>
+                <p class="feature-desc">Access over 2.5 million properties in 220+ countries and territories.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-tag"></i></div>
+                <h3 class="feature-title">Best Price Guarantee</h3>
+                <p class="feature-desc">Find a lower price? We'll refund the difference and give you a discount.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p class="feature-desc">Our customer service team is available round the clock to assist you.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-thumbs-up"></i></div>
+                <h3 class="feature-title">Verified Reviews</h3>
+                <p class="feature-desc">Over 175 million verified guest reviews to help you make the right choice.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-banner">
+        <div class="banner-content">
+            <h2 class="banner-title">Download the Way To Home app</h2>
+            <p>Book on the go, get app-only discounts, and manage your trips with our mobile app.</p>
+            <div class="store-buttons">
+                <button class="store-btn">
+                    <i class="fab fa-apple fa-2x"></i>
+                    <span>App Store</span>
+                </button>
+                <button class="store-btn">
+                    <i class="fab fa-google-play fa-2x"></i>
+                    <span>Google Play</span>
+                </button>
+            </div>
+        </div>
+        <div class="app-image">
+            <img src="https://r-xx.bstatic.com/data/mobile_app_landing_page/preload_data/image_variations/phone-banner@2x.png" alt="Mobile App">
+        </div>
+    </section>
+
+    <section class="subscribe">
+        <h2 class="section-title">Subscribe to our newsletter</h2>
+        <p>Get the best travel deals, tips, and inspiration straight to your inbox.</p>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Your email address" class="subscribe-input">
+            <button class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-title">Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Center</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Resource Center</a></li>
+                    <li><a href="#">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Countries</a></li>
+                    <li><a href="#">Regions</a></li>
+                    <li><a href="#">Cities</a></li>
+                    <li><a href="#">Districts</a></li>
+                    <li><a href="#">Airports</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Seasonal and Holiday Deals</a></li>
+                    <li><a href="#">Travel Articles</a></li>
+                    <li><a href="#">Travel Communities</a></li>
+                    <li><a href="#">Traveler Rewards</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
