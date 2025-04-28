@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>World Explorer - Country Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #006ce4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .country-card {
+            width: 30%;
+            background-color: white;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .country-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .country-card h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .country-card p {
+            font-size: 16px;
+            color: #006ce4;
+        }
+
+        /* Featured Countries Section */
+        .featured {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            background-color: #e9e9e9;
+        }
+
+        .featured h2 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .featured .country-card {
+            width: 30%;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #006ce4;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .country-card {
+                width: 45%;
+            }
+
+            .featured .country-card {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .country-card {
+                width: 100%;
+            }
+
+            .featured .country-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>World Explorer</h1>
+        <p>Discover Countries, Cultures, and Hidden Gems</p>
+    </header>
+
+    
+
+    <div class="featured">
+        <h2>Featured Countries</h2>
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="France">
+            <h2>France</h2>
+            <p>Known for its rich history, art, and iconic landmarks like the Eiffel Tower.</p>
+        </div>
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="Japan">
+            <h2>Japan</h2>
+            <p>A harmonious blend of ancient traditions and modern technology.</p>
+        </div>
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="Brazil">
+            <h2>Brazil</h2>
+            <p>Famous for the Amazon Rainforest and vibrant Carnival celebrations.</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="Italy">
+            <h2>Italy</h2>
+            <p>From Venice's canals to Rome's ancient ruins, Italy is full of history and beauty.</p>
+        </div>
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="Australia">
+            <h2>Australia</h2>
+            <p>Explore the Great Barrier Reef, Sydney Opera House, and outback adventures.</p>
+        </div>
+        <div class="country-card">
+            <img src="https://via.placeholder.com/300x200" alt="India">
+            <h2>India</h2>
+            <p>Rich in culture, spirituality, and diverse landscapes from mountains to beaches.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Way to home. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a></p>
+    </footer>
+</body>
+</html>
