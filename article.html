@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Articles by Influencers</title>
+  <style>
+    /* Reset some basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Primary Color Variables */
+    :root {
+      --primary-blue: #0077cc;
+    }
+
+    /* Header */
+    .header {
+      background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
+      color: white;
+      background-color: var(--primary-blue);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+    }
+
+    /* Main Articles */
+    .articles-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .article-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .article-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .article-content {
+      padding: 1rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue); /* Blue for article title */
+    }
+
+    .article-content p {
+      margin-bottom: 0.5rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--primary-blue); /* Blue for links */
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--primary-blue); /* Blue background for footer */
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>Travel Articles</h1>
+    <p>Discover journeys from top influencers around the world</p>
+  </header>
+
+  <main class="articles-container">
+    <article class="article-card">
+      <img src="https://via.placeholder.com/300x200" alt="Santorini" class="article-image">
+      <div class="article-content">
+        <h2>Exploring Santorini</h2>
+        <p>by @wanderlust_anna</p>
+        <p>A magical guide to the blue-domed paradise in Greece.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="https://via.placeholder.com/300x200" alt="Tokyo" class="article-image">
+      <div class="article-content">
+        <h2>Tokyo Street Adventures</h2>
+        <p>by @nomadic_mike</p>
+        <p>Discover hidden gems in the bustling streets of Tokyo.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="https://via.placeholder.com/300x200" alt="Peru" class="article-image">
+      <div class="article-content">
+        <h2>Mysteries of Machu Picchu</h2>
+        <p>by @globetrotter_emma</p>
+        <p>Unveiling the ancient secrets of the Incan empire.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 TravelVibes. All rights reserved.</p>
+  </footer>
+</body>
+</html>
