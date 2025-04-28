@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Way to Home | Login & Signup</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Travel background image with overlay */
+      background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #fff;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input {
+      padding: 11px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.7);
+      color: #222;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 11px;
+      background-color: #0077cc;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .toggle {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #fff;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    }
+
+    .toggle a {
+      color: #ffd700;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="formTitle">Login to Way to Home</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="active" action="/login" method="POST">
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" action="/signup" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Toggle Links -->
+    <div class="toggle">
+      <span id="toggleText">Don't have an account? <a onclick="switchForm()">Sign up here</a></span>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const toggleText = document.getElementById("toggleText");
+    const formTitle = document.getElementById("formTitle");
+
+    function switchForm() {
+      if (loginForm.classList.contains("active")) {
+        loginForm.classList.remove("active");
+        signupForm.classList.add("active");
+        formTitle.innerText = "Create Your Account";
+        toggleText.innerHTML = 'Already have an account? <a onclick="switchForm()">Log in</a>';
+      } else {
+        signupForm.classList.remove("active");
+        loginForm.classList.add("active");
+        formTitle.innerText = "Login to Way to Home";
+        toggleText.innerHTML = 'Don\'t have an account? <a onclick="switchForm()">Sign up here</a>';
+      }
+    }
+  </script>
+</body>
+</html>
