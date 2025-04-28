@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Way to Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-container {
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 40px 30px 30px 30px;
+      width: 100%;
+      max-width: 420px;
+      margin: 40px 0;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 2.1rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    }
+    .contact-container p {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #e0e0e0;
+      font-size: 1.1rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .input-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+    }
+    .input-row .input-group {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .input-group {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      margin-bottom: 0;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px 13px 44px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      color: #222;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      resize: none;
+    }
+    .input-group textarea {
+      min-height: 80px;
+      max-height: 180px;
+    }
+    .input-group label {
+      position: absolute;
+      left: 44px;
+      top: 13px;
+      color: #888;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: 0.2s;
+      background: transparent;
+    }
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:focus + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+      top: -14px;
+      left: 36px;
+      font-size: 0.85rem;
+      color: #0077cc;
+      background: rgba(255,255,255,0.7);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+    .input-group .icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 1.15rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: color 0.2s, box-shadow 0.2s, background 0.2s;
+      pointer-events: none;
+    }
+    .input-group input:focus ~ .icon,
+    .input-group textarea:focus ~ .icon {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      filter: brightness(1.1);
+    }
+    .contact-form button {
+      padding: 13px;
+      background: linear-gradient(90deg, #0077cc 60%, #ff6b6b 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, #ff6b6b 60%, #0077cc 100%);
+    }
+    .contact-info {
+      margin-top: 30px;
+      text-align: center;
+      color: #fff;
+    }
+    .contact-info .info-item {
+      margin: 10px 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0.9;
+    }
+    .contact-info .info-item i {
+      color: #ffd700;
+      font-size: 1.2rem;
+      animation: bounce 1.5s infinite alternate;
+    }
+    @keyframes bounce {
+      to { transform: translateY(-4px);}
+    }
+    .social-links {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+    .social-links a {
+      color: #fff;
+      background: rgba(0,0,0,0.18);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .social-links a:hover {
+      background: #ff6b6b;
+      color: #fff;
+      transform: translateY(-3px) scale(1.1);
+    }
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 25px 8px 18px 8px;
+        max-width: 98vw;
+      }
+      .input-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Whether you have a question, suggestion, or just want to say hello, our travel team is here for you.</p>
+    <form class="contact-form" id="contactForm" autocomplete="off" onsubmit="return sendMessage(event)">
+      <div class="input-row">
+        <div class="input-group">
+          <input type="text" id="firstName" name="firstName" required placeholder=" " />
+          <label for="firstName">First Name</label>
+          <span class="icon" style="background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);">
+            <i class="fa-solid fa-earth-asia"></i>
+          </span>
+        </div>
+        <div class="input-group">
+          <input type="text" id="lastName" name="lastName" required placeholder=" " />
+          <label for="lastName">Last Name</label>
+          <span class="icon" style="background: linear-gradient(135deg, #ffaf7b 0%, #d76d77 100%);">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </span>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="email" id="email" name="email" required placeholder=" " />
+        <label for="email">Email Address</label>
+        <span class="icon" style="background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);">
+          <i class="fa-solid fa-envelope-open-text"></i>
+        </span>
+      </div>
+      <div class="input-group">
+        <input type="text" id="subject" name="subject" required placeholder=" " />
+        <label for="subject">Subject</label>
+        <span class="icon" style="background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);">
+          <i class="fa-solid fa-plane-departure"></i>
+        </span>
+      </div>
+      <div class="input-group">
+        <textarea id="message" name="message" required placeholder=" "></textarea>
+        <label for="message">Your Message</label>
+        <span class="icon" style="background: linear-gradient(135deg, #ffaf7b 0%, #d76d77 100%);">
+          <i class="fa-solid fa-comments"></i>
+        </span>
+      </div>
+      <button type="submit">Send Message <i class="fa fa-paper-plane"></i></button>
+    </form>
+    <div class="contact-info">
+      <div class="info-item">
+        <i class="fa-solid fa-location-dot" style="color:#43cea2; background: #fff3; border-radius:50%; padding:7px;"></i>
+        Chitkara University, Punjab, India
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-phone-volume" style="color:#f7971e; background: #fff3; border-radius:50%; padding:7px;"></i>
+        +91 12345 67890
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-envelope-circle-check" style="color:#d76d77; background: #fff3; border-radius:50%; padding:7px;"></i>
+        support@waytohome.com
+      </div>
+      <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      // Simple validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (name.length < 2) {
+        alert('Please enter a valid name.');
+        return false;
+      }
+      if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+      if (subject.length < 3) {
+        alert('Please enter a subject.');
+        return false;
+      }
+      if (message.length < 10) {
+        alert('Message must be at least 10 characters long.');
+        return false;
+      }
+      // Simulate sending
+      alert('Thank you for contacting us! Our travel team will get back to you soon.');
+      document.getElementById('contactForm').reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
