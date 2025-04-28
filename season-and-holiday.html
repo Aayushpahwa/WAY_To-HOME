@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Way to Home - Travel Inspiration</title>
+  <style>
+    :root {
+      --primary-color: #0077cc;
+      --secondary-color: #e0f0ff;
+      --text-color: #333;
+      --light-text: #666;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    header {
+      background-image: url('https://source.unsplash.com/1600x600/?travel,adventure');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 50, 0.4);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+      animation: fadeInDown 1s ease;
+    }
+
+    header p {
+      font-size: 1.8em;
+      margin-top: 10px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .marquee {
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 15s linear infinite;
+      font-size: 1.2em;
+    }
+
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .post {
+      background: white;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .post img {
+      width: 100%;
+      height: auto;
+    }
+
+    .post-content {
+      padding: 20px;
+    }
+
+    .post-content h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .post-content p {
+      color: var(--light-text);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      background: var(--primary-color);
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Way to Home</h1>
+  <p>Find Your Next Journey</p>
+</header>
+
+<div class="marquee">
+  <span>New Adventures Await - Discover, Travel, Explore with Way to Home!</span>
+</div>
+
+<div class="container">
+  <div class="post">
+    <img src="https://source.unsplash.com/800x400/?mountains,nature" alt="Mountain adventure">
+    <div class="post-content">
+      <h2>Chasing Sunsets in the Mountains</h2>
+      <p>Escape into the serene beauty of towering peaks and glowing skies. Discover the most breathtaking spots to watch the sunset and feel at home with nature.</p>
+    </div>
+  </div>
+
+  <div class="post">
+    <img src="https://source.unsplash.com/800x400/?beach,travel" alt="Beach getaway">
+    <div class="post-content">
+      <h2>A Beach Lover's Paradise</h2>
+      <p>Explore crystal clear waters, soft sands, and unforgettable sunsets. Get inspired for your next coastal adventure with our top beach destinations.</p>
+    </div>
+  </div>
+
+  <div class="post">
+    <img src="https://source.unsplash.com/800x400/?city,travel" alt="City exploration">
+    <div class="post-content">
+      <h2>Hidden Gems in the City</h2>
+      <p>Uncover secret spots, cozy cafes, and vibrant street art scenes. See the city from a fresh perspective and ignite your wanderlust.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Way to Home. All rights reserved.
+</footer>
+
+</body>
+</html>
