@@ -88,7 +88,7 @@ body {
 
 /* Hero section with background image */
 .hero {
-    background-image: linear-gradient(rgba(0, 78, 146, 0.7), rgba(0, 78, 146, 0.7)), url('https://r-xx.bstatic.com/xdata/images/xphoto/2880x868/347684177.jpeg?k=0e9ab593f30c89b4d3a83d5fb5306b464a5ac4c93ff3d3ca7221db3347c5287d&o=');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     padding: 80px 40px;
@@ -528,5 +528,574 @@ body {
     .search-btn {
         width: 100%;
         padding: 16px;
+    }
+}
+
+/* Search results section */
+.search-results {
+    padding: 60px 40px;
+    background-color: var(--secondary-color);
+}
+
+/* Results info styling */
+.results-info {
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Results grid layout */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* Property card styling */
+.property-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Hover effect for property cards */
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Property image container */
+.property-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+/* Property image styling */
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+/* Zoom effect on image hover */
+.property-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Property content area */
+.property-content {
+    padding: 16px;
+}
+
+/* Property name styling */
+.property-name {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+/* Property location styling */
+.property-location {
+    color: var(--light-text);
+    margin-bottom: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Property rating container */
+.property-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Rating score badge */
+.rating-score {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Rating text description */
+.rating-text {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Review count styling */
+.review-count {
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+/* Property price container */
+.property-price {
+    margin-bottom: 16px;
+}
+
+/* Price amount styling */
+.price-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Price period styling */
+.price-period {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+/* Book now button styling */
+.book-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Hover effect for book button */
+.book-btn:hover {
+    background-color: #e67300;
+}
+
+/* Error message styling */
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Error state for input fields */
+.has-error input {
+    border-color: #e74c3c;
+}
+
+/* Mobile specific search form styling */
+.search-form.mobile {
+    flex-direction: column;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    /* ... existing media queries ... */
+    
+    /* Adjust padding for search results */
+    .search-results {
+        padding: 40px 20px;
+    }
+    
+    /* Single column grid for results on mobile */
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust search form for mobile */
+    .search-input, .date-picker, .guests {
+        width: 100%;
+    }
+    
+    /* Full width date picker inputs on mobile */
+    .date-picker {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    /* Adjust search button on mobile */
+    .search-btn {
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+/* Local Pulse Dashboard styles */
+.local-pulse {
+    padding: 4rem 2rem;
+    background-color: var(--background-light);
+}
+
+.pulse-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.pulse-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pulse-widget {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pulse-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.widget-header i {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.widget-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.widget-content {
+    padding: 1.5rem;
+}
+
+/* Weather widget styles */
+.weather-display {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.weather-icon {
+    font-size: 2.5rem;
+    color: #FFB900;
+    margin-right: 1rem;
+}
+
+.weather-temp {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.weather-forecast {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.weather-impact {
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Events widget styles */
+.event-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.event-date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.event-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.event-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+}
+
+.event-tag.popular {
+    background-color: var(--accent-color);
+}
+
+.event-tag.niche {
+    background-color: #6c757d;
+}
+
+/* Vibe meter styles */
+.vibe-score {
+    margin-bottom: 1rem;
+}
+
+.vibe-indicator {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.vibe-indicator.positive {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.vibe-indicator.neutral {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.vibe-indicator.negative {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.vibe-meter {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background-color: #28a745;
+    border-radius: 4px;
+}
+
+.vibe-summary {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--text-primary);
+}
+
+/* Crowd density styles */
+.crowd-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.crowd-area:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.area-name {
+    font-weight: 500;
+}
+
+.area-density {
+    display: flex;
+    gap: 3px;
+}
+
+.area-density i {
+    font-size: 0.8rem;
+}
+
+.area-density.high i {
+    color: #dc3545;
+}
+
+.area-density.medium i {
+    color: #ffc107;
+}
+
+.area-density.low i {
+    color: #28a745;
+}
+
+/* News pulse styles */
+.news-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.news-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.news-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.news-tag.alert {
+    background-color: #dc3545;
+}
+
+.news-tag.info {
+    background-color: #17a2b8;
+}
+
+.news-headline {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Trending culture styles */
+.trending-section {
+    margin-bottom: 1.5rem;
+}
+
+.trending-section:last-child {
+    margin-bottom: 0;
+}
+
+.trending-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.trending-section h4 i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+.trending-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.trending-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Local tip styles */
+.tip-content {
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.tip-content i.fa-quote-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.tip-content i.fa-quote-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.tip-content p {
+    margin: 0;
+    padding: 0 1.5rem;
+}
+
+.tip-author {
+    text-align: right;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: 0.75rem;
+}
+
+/* Destination vibe filters */
+.pulse-filters {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.filter-label {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #f8f9fa;
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.filter-btn i {
+    margin-right: 0.5rem;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Media queries for Local Pulse */
+@media (max-width: 768px) {
+    .pulse-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
     }
 } 
