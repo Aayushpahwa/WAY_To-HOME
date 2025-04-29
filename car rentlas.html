@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Rental Service</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #1e88e5;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .cars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .car-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .car-card h3 {
+      margin: 10px;
+    }
+
+    .car-card p {
+      margin: 0 10px 10px;
+      font-size: 0.9rem;
+    }
+
+    .booking-form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .booking-form input, .booking-form select, .booking-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .booking-form button {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .booking-form button:hover {
+      background: #1565c0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e88e5;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DriveAway Rentals</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#cars">Cars</a>
+      <a href="#booking">Book Now</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    Find Your Perfect Ride!
+  </section>
+
+  <section class="section" id="cars">
+    <h2>Available Cars</h2>
+    <div class="cars">
+      <div class="car-card">
+        <img src="https://5.imimg.com/data5/XV/OB/GLADMIN-51645721/sedan-car-for-sale-500x500.png" alt="Sedan">
+        <h3>Luxury Sedan</h3>
+        <p>Comfortable and stylish. Perfect for city rides.</p>
+      </div>
+      <div class="car-card">
+        <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/Mahindra/Scorpio-N/10817/1740050844896/front-left-side-47.jpg?imwidth=420&impolicy=resize" alt="SUV">
+        <h3>Family SUV</h3>
+        <p>Spacious and powerful. Ideal for family trips.</p>
+      </div>
+      <div class="car-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu9883V3i0uDGl3JueU7Viv6-kfW0qUiodKg&s" alt="Sports Car">
+        <h3>Sports Car</h3>
+        <p>Speed and style. Make your ride unforgettable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <h2>Book Your Ride</h2>
+    <form class="booking-form">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="date" required />
+      <input type="date" required />
+      <select required>
+        <option value="">Select Car Type</option>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="sports">Sports Car</option>
+      </select>
+      <button type="submit">Confirm Booking</button>
+    </form>
+    </section>
+    </body>
+</html>       
