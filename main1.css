@@ -88,7 +88,7 @@ body {
 
 /* Hero section with background image */
 .hero {
-    background-image: linear-gradient(rgba(0, 78, 146, 0.7), rgba(0, 78, 146, 0.7)), url('https://r-xx.bstatic.com/xdata/images/xphoto/2880x868/347684177.jpeg?k=0e9ab593f30c89b4d3a83d5fb5306b464a5ac4c93ff3d3ca7221db3347c5287d&o=');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     padding: 80px 40px;
