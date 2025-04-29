@@ -25,7 +25,7 @@ body {
 /* Header section styles */
 .header {
     background-color: var(--primary-color);
-    padding: 16px 40px;
+    padding: 15px 40px;
     color: var(--white);
 }
 
@@ -38,7 +38,7 @@ body {
 
 /* Website logo styling */
 .logo {
-    font-size: 24px;
+    font-size: 24.5px;
     font-weight: 700;
 }
 
@@ -54,7 +54,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
@@ -88,7 +88,7 @@ body {
 
 /* Hero section with background image */
 .hero {
-    background-image: linear-gradient(rgba(0, 78, 146, 0.7), rgba(0, 78, 146, 0.7)), url('https://r-xx.bstatic.com/xdata/images/xphoto/2880x868/347684177.jpeg?k=0e9ab593f30c89b4d3a83d5fb5306b464a5ac4c93ff3d3ca7221db3347c5287d&o=');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     padding: 80px 40px;
@@ -525,6 +525,197 @@ body {
     }
     
     /* Make search button full width on mobile */
+    .search-btn {
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+/* Search results section */
+.search-results {
+    padding: 60px 40px;
+    background-color: var(--secondary-color);
+}
+
+/* Results info styling */
+.results-info {
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Results grid layout */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* Property card styling */
+.property-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Hover effect for property cards */
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Property image container */
+.property-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+/* Property image styling */
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+/* Zoom effect on image hover */
+.property-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Property content area */
+.property-content {
+    padding: 16px;
+}
+
+/* Property name styling */
+.property-name {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+/* Property location styling */
+.property-location {
+    color: var(--light-text);
+    margin-bottom: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Property rating container */
+.property-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Rating score badge */
+.rating-score {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Rating text description */
+.rating-text {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Review count styling */
+.review-count {
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+/* Property price container */
+.property-price {
+    margin-bottom: 16px;
+}
+
+/* Price amount styling */
+.price-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Price period styling */
+.price-period {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+/* Book now button styling */
+.book-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Hover effect for book button */
+.book-btn:hover {
+    background-color: #e67300;
+}
+
+/* Error message styling */
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Error state for input fields */
+.has-error input {
+    border-color: #e74c3c;
+}
+
+/* Mobile specific search form styling */
+.search-form.mobile {
+    flex-direction: column;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    /* ... existing media queries ... */
+    
+    /* Adjust padding for search results */
+    .search-results {
+        padding: 40px 20px;
+    }
+    
+    /* Single column grid for results on mobile */
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust search form for mobile */
+    .search-input, .date-picker, .guests {
+        width: 100%;
+    }
+    
+    /* Full width date picker inputs on mobile */
+    .date-picker {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    /* Adjust search button on mobile */
     .search-btn {
         width: 100%;
         padding: 16px;
