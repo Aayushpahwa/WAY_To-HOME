@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding and responsive viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Way To Home</title>
+    <!-- External CSS libraries - Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main stylesheet link -->
+    <link rel="stylesheet" href="main1.css">
+    <!-- About page specific styles -->
+    <style>
+        /* About page specific styles */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 40px;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .about-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .about-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-section {
+            padding: 80px 40px;
+        }
+        
+        .about-section:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: var(--light-text);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .team-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .team-role {
+            color: var(--light-text);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .value-desc {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 80px 20px;
+            }
+            
+            .about-section {
+                padding: 60px 20px;
+            }
+            
+            .about-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .about-hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-image {
+                order: 1;
+            }
+            
+            .about-text {
+                order: 2;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section with navigation bar -->
+    <header class="header">
+        <nav class="nav">
+            <!-- Website logo -->
+            <div class="logo">Way To Home</div>
+            <!-- Navigation links -->
+            <div class="nav-links">
+                <!-- Active page - Stays -->
+                <a href="main1.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flightss.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="#"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="#"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="#"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#">USD</a>
+                <a href="login.html">Sign in</a>
+                <a href="signup.html" class="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero section for about page -->
+    <section class="about-hero">
+        <h1>About Way To Home</h1>
+        <p>Connecting travelers with the perfect accommodations since 2010</p>
+    </section>
+
+    <!-- Our Mission section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>Way To Home exists to make it easier for everyone to experience the world. By investing in technology that takes the friction out of travel, we seamlessly connect millions of travelers to memorable experiences, a variety of transportation options, and incredible places to stay – from homes to hotels, and much more.</p>
+                <p>As one of the world's largest travel marketplaces, we empower partners around the world to grow their businesses and make it easy for people everywhere to explore the world where and how they want to.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1501003878151-d3cb87799705?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Mission image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Our story image">
+            </div>
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Way To Home was founded in 2010 with a vision to revolutionize the way people book accommodations online. What began as a small startup with just 5 employees has grown into a global company with offices in over 70 countries worldwide.</p>
+                <p>Our journey started when our founders experienced the challenges of finding suitable accommodations during their travels. They believed there had to be a better way to connect travelers with property owners, making the booking process seamless and transparent.</p>
+                <p>Today, we've helped millions of travelers find their perfect stay, and we continue to innovate and expand our services to meet the evolving needs of modern travelers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text" style="flex: 100%;">
+                <h2 style="text-align: center;">Way To Home by the Numbers</h2>
+                <p style="text-align: center;">Our global reach and impact grows every day</p>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">28M+</div>
+                        <div class="stat-label">Total Accommodation Listings</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">220+</div>
+                        <div class="stat-label">Countries & Territories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">175M+</div>
+                        <div class="stat-label">Verified Guest Reviews</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6.5M+</div>
+                        <div class="stat-label">Bookings Monthly</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text" style="flex: 100%;">
+                <h2 style="text-align: center;">Leadership Team</h2>
+                <p style="text-align: center;">Meet the people driving our mission forward</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src= alt="CEO" class="team-photo">
+                        <div class="team-name">Aradhy Srivastava</div>
+                        <div class="team-role">Chief Executive Officer</div>
+                    </div>
+                    <div class="team-member">
+                        <img src= alt="COO" class="team-photo">
+                        <div class="team-name">Arjun makkar</div>
+                        <div class="team-role">Chief Operating Officer</div>
+                    </div>
+                    <div class="team-member">
+                        <img src= alt="CTO" class="team-photo">
+                        <div class="team-name">Ayush pahwa</div>
+                        <div class="team-role">Chief Technology Officer</div>
+                    </div>
+                    <div class="team-member">
+                        <img src= alt="CMO" class="team-photo">
+                        <div class="team-name">Arjun Verma</div>
+                        <div class="team-role">Chief Marketing Officer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text" style="flex: 100%;">
+                <h2 style="text-align: center;">Our Core Values</h2>
+                <p style="text-align: center;">The principles that guide everything we do</p>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-heart"></i></div>
+                        <div class="value-title">Customer First</div>
+                        <div class="value-desc">We're passionate about delivering exceptional experiences for travelers and partners alike. Every decision we make is centered around our customers' needs.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-globe"></i></div>
+                        <div class="value-title">Global Mindset</div>
+                        <div class="value-desc">We embrace diversity of thought, culture, and perspective. We build products and services that work for everyone, everywhere.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="value-title">Innovation</div>
+                        <div class="value-desc">We constantly challenge the status quo and aren't afraid to disrupt ourselves. We foster creativity and forward-thinking.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="value-title">Integrity</div>
+                        <div class="value-desc">We're committed to transparency, honesty, and doing what's right. We build trust through every interaction and transaction.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Sustainable Travel</h2>
+                <p>At Way To Home, we recognize our responsibility to the environment and the communities we serve. We're committed to promoting sustainable travel practices and reducing our environmental footprint.</p>
+                <p>Our sustainability initiatives include:</p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Carbon offset programs for our operations</li>
+                    <li>Highlighting eco-friendly accommodations</li>
+                    <li>Partnering with local communities to promote sustainable tourism</li>
+                    <li>Reducing waste in our offices worldwide</li>
+                    <li>Supporting conservation efforts in popular tourist destinations</li>
+                </ul>
+                <p>By making thoughtful choices, we believe travel can be a force for good in the world.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1626668893528-1e8d49ded164?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Sustainability image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with site information and links -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Column 1 - About -->
+            <div class="footer-col">
+                <h3 class="footer-title">Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html" class="active">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Center</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <!-- Footer Column 2 - Support -->
+            <div class="footer-col">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Resource Center</a></li>
+                    <li><a href="#">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                </ul>
+            </div>
+            <!-- Footer Column 3 - Destinations -->
+            <div class="footer-col">
+                <h3 class="footer-title">Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <!-- Footer Column 4 - Traveler Resources -->
+            <div class="footer-col">
+                <h3 class="footer-title">For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal and Holiday Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Travel Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Copyright information -->
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
+
+    <!-- JavaScript file link -->
+    <script src="main1.js"></script>
+</body>
+</html> 
