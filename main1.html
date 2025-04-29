@@ -165,6 +165,173 @@
         </div>
     </section>
 
+    <!-- Local Pulse Dashboard section -->
+    <section class="local-pulse">
+        <h2 class="section-title">Local Pulse</h2>
+        <p class="pulse-subtitle">Get real-time insights into your destination's current vibe</p>
+        
+        <div class="pulse-dashboard">
+            <!-- Weather Widget -->
+            <div class="pulse-widget weather-widget">
+                <div class="widget-header">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h3>Weather & Mood</h3>
+                </div>
+                <div class="widget-content" id="weather-content">
+                    <div class="weather-display">
+                        <div class="weather-icon"><i class="fas fa-sun"></i></div>
+                        <div class="weather-temp">28°C</div>
+                    </div>
+                    <div class="weather-forecast">Sunny with light clouds</div>
+                    <div class="weather-impact">Perfect day for walking tours and outdoor cafés!</div>
+                </div>
+            </div>
+            
+            <!-- Events Widget -->
+            <div class="pulse-widget events-widget">
+                <div class="widget-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Local Events</h3>
+                </div>
+                <div class="widget-content" id="events-content">
+                    <div class="event-item">
+                        <div class="event-date">Today, 8PM</div>
+                        <div class="event-name">Jazz Festival in Central Park</div>
+                        <div class="event-tag popular">Popular</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Tomorrow, 2PM</div>
+                        <div class="event-name">Local Food Market Tour</div>
+                        <div class="event-tag niche">Niche</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Friday, 7PM</div>
+                        <div class="event-name">Night Museum Tour</div>
+                        <div class="event-tag popular">Popular</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vibe Meter Widget -->
+            <div class="pulse-widget vibe-widget">
+                <div class="widget-header">
+                    <i class="fas fa-smile"></i>
+                    <h3>Vibe Meter</h3>
+                </div>
+                <div class="widget-content" id="vibe-content">
+                    <div class="vibe-score">
+                        <div class="vibe-indicator positive">🟢 Positive</div>
+                        <div class="vibe-meter">
+                            <div class="meter-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="vibe-summary">"Locals are excited about the Jazz Festival and perfect summer weather!"</div>
+                </div>
+            </div>
+            
+            <!-- Crowd Density Widget -->
+            <div class="pulse-widget crowd-widget">
+                <div class="widget-header">
+                    <i class="fas fa-users"></i>
+                    <h3>Crowd Density</h3>
+                </div>
+                <div class="widget-content" id="crowd-content">
+                    <div class="crowd-areas">
+                        <div class="crowd-area">
+                            <div class="area-name">Downtown</div>
+                            <div class="area-density high">
+                                <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                        <div class="crowd-area">
+                            <div class="area-name">Beach Front</div>
+                            <div class="area-density medium">
+                                <i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>
+                            </div>
+                        </div>
+                        <div class="crowd-area">
+                            <div class="area-name">Museum District</div>
+                            <div class="area-density low">
+                                <i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- News Pulse Widget -->
+            <div class="pulse-widget news-widget">
+                <div class="widget-header">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>News Pulse</h3>
+                </div>
+                <div class="widget-content" id="news-content">
+                    <div class="news-item">
+                        <div class="news-tag alert">Transport</div>
+                        <div class="news-headline">Subway Line 2 closed for maintenance until 5PM</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-tag info">Event</div>
+                        <div class="news-headline">City Hall square closed for weekend festival preparation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Culture Widget -->
+            <div class="pulse-widget trending-widget">
+                <div class="widget-header">
+                    <i class="fas fa-music"></i>
+                    <h3>Trending Culture</h3>
+                </div>
+                <div class="widget-content" id="trending-content">
+                    <div class="trending-section">
+                        <h4><i class="fab fa-spotify"></i> Top Music</h4>
+                        <ol class="trending-list">
+                            <li>Summer Vibes - Local Artist</li>
+                            <li>City Nights - DJ Pulse</li>
+                            <li>Morning Cafe - Jazz Ensemble</li>
+                        </ol>
+                    </div>
+                    <div class="trending-section">
+                        <h4><i class="fab fa-youtube"></i> Popular Videos</h4>
+                        <ol class="trending-list">
+                            <li>10 Hidden Gems in Downtown</li>
+                            <li>Street Food Tour 2023</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Local Tip Widget -->
+            <div class="pulse-widget tip-widget">
+                <div class="widget-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Local Tip of the Day</h3>
+                </div>
+                <div class="widget-content" id="tip-content">
+                    <div class="tip-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>With the Jazz Festival happening, local cafés around Central Park are offering special "Jazz Menus" with discounts if you have a festival ticket. Try the Blueberry Jazz Smoothie at Cafe Melody!</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="tip-author">- Maria, Local Guide</div>
+                </div>
+            </div>
+            
+            <!-- Destination Vibe Filters -->
+            <div class="pulse-filters">
+                <div class="filter-label">Explore destinations by vibe:</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active"><i class="fas fa-cocktail"></i> Party</button>
+                    <button class="filter-btn"><i class="fas fa-umbrella-beach"></i> Relax</button>
+                    <button class="filter-btn"><i class="fas fa-heart"></i> Romantic</button>
+                    <button class="filter-btn"><i class="fas fa-hiking"></i> Adventure</button>
+                    <button class="filter-btn"><i class="fas fa-palette"></i> Cultural</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features and benefits section -->
     <section class="features">
         <h2 class="section-title">Why choose Way To Home?</h2>

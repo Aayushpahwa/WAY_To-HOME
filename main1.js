@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Results container (we'll create this element)
     let resultsContainer;
     
+    // Local Pulse elements
+    const pulseWidgets = document.querySelectorAll('.pulse-widget');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
     // Initialize the application
     initApp();
     
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeDatePickers();
         setupEventListeners();
         createResultsContainer();
+        initializeLocalPulse();
     }
     
     // Setup all event listeners
@@ -30,11 +35,313 @@ document.addEventListener('DOMContentLoaded', function() {
         checkInInput.addEventListener('change', validateDates);
         checkOutInput.addEventListener('change', validateDates);
         
+        // Setup Local Pulse filter buttons
+        if (filterButtons) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', handleVibeFilter);
+            });
+        }
+        
         // Add responsive behavior for mobile
         window.addEventListener('resize', handleResize);
         
         // Initialize responsive layout
         handleResize();
+    }
+    
+    // Initialize Local Pulse feature
+    function initializeLocalPulse() {
+        // Load initial data
+        fetchLocalPulseData();
+        
+        // Refresh data every 5 minutes (300000ms)
+        setInterval(fetchLocalPulseData, 300000);
+    }
+    
+    // Fetch Local Pulse data from APIs
+    function fetchLocalPulseData() {
+        // In a real implementation, we would make API calls here
+        // For this demo, we'll simulate the API response with mock data
+        
+        // Simulate API delay with setTimeout
+        setTimeout(() => {
+            updateWeatherWidget(mockWeatherData);
+            updateEventsWidget(mockEventsData);
+            updateVibeWidget(mockVibeData);
+            updateCrowdWidget(mockCrowdData);
+            updateNewsWidget(mockNewsData);
+            updateTrendingWidget(mockTrendingData);
+            updateTipWidget(mockTipData);
+        }, 500);
+    }
+    
+    // Mock data for Local Pulse widgets
+    const mockWeatherData = {
+        temp: 28,
+        condition: 'Sunny with light clouds',
+        icon: 'sun',
+        impact: 'Perfect day for walking tours and outdoor cafés!'
+    };
+    
+    const mockEventsData = [
+        {
+            date: 'Today, 8PM',
+            name: 'Jazz Festival in Central Park',
+            isPopular: true
+        },
+        {
+            date: 'Tomorrow, 2PM',
+            name: 'Local Food Market Tour',
+            isPopular: false
+        },
+        {
+            date: 'Friday, 7PM',
+            name: 'Night Museum Tour',
+            isPopular: true
+        }
+    ];
+    
+    const mockVibeData = {
+        score: 85,
+        status: 'positive', // can be positive, neutral, or negative
+        summary: 'Locals are excited about the Jazz Festival and perfect summer weather!'
+    };
+    
+    const mockCrowdData = [
+        { area: 'Downtown', level: 'high' },
+        { area: 'Beach Front', level: 'medium' },
+        { area: 'Museum District', level: 'low' }
+    ];
+    
+    const mockNewsData = [
+        {
+            type: 'alert',
+            category: 'Transport',
+            headline: 'Subway Line 2 closed for maintenance until 5PM'
+        },
+        {
+            type: 'info',
+            category: 'Event',
+            headline: 'City Hall square closed for weekend festival preparation'
+        }
+    ];
+    
+    const mockTrendingData = {
+        music: [
+            'Summer Vibes - Local Artist',
+            'City Nights - DJ Pulse',
+            'Morning Cafe - Jazz Ensemble'
+        ],
+        videos: [
+            '10 Hidden Gems in Downtown',
+            'Street Food Tour 2023'
+        ]
+    };
+    
+    const mockTipData = {
+        tip: 'With the Jazz Festival happening, local cafés around Central Park are offering special "Jazz Menus" with discounts if you have a festival ticket. Try the Blueberry Jazz Smoothie at Cafe Melody!',
+        author: 'Maria, Local Guide'
+    };
+    
+    // Update weather widget with data
+    function updateWeatherWidget(data) {
+        const weatherContent = document.getElementById('weather-content');
+        if (!weatherContent) return;
+        
+        weatherContent.innerHTML = `
+            <div class="weather-display">
+                <div class="weather-icon"><i class="fas fa-${data.icon}"></i></div>
+                <div class="weather-temp">${data.temp}°C</div>
+            </div>
+            <div class="weather-forecast">${data.condition}</div>
+            <div class="weather-impact">${data.impact}</div>
+        `;
+    }
+    
+    // Update events widget with data
+    function updateEventsWidget(data) {
+        const eventsContent = document.getElementById('events-content');
+        if (!eventsContent) return;
+        
+        let eventsHTML = '';
+        data.forEach(event => {
+            eventsHTML += `
+                <div class="event-item">
+                    <div class="event-date">${event.date}</div>
+                    <div class="event-name">${event.name}</div>
+                    <div class="event-tag ${event.isPopular ? 'popular' : 'niche'}">${event.isPopular ? 'Popular' : 'Niche'}</div>
+                </div>
+            `;
+        });
+        
+        eventsContent.innerHTML = eventsHTML;
+    }
+    
+    // Update vibe widget with data
+    function updateVibeWidget(data) {
+        const vibeContent = document.getElementById('vibe-content');
+        if (!vibeContent) return;
+        
+        // Determine emoji based on status
+        let emoji = '🟢';
+        if (data.status === 'neutral') emoji = '🟡';
+        if (data.status === 'negative') emoji = '🔴';
+        
+        // Determine status text
+        let statusText = 'Positive';
+        if (data.status === 'neutral') statusText = 'Neutral';
+        if (data.status === 'negative') statusText = 'Negative';
+        
+        vibeContent.innerHTML = `
+            <div class="vibe-score">
+                <div class="vibe-indicator ${data.status}">${emoji} ${statusText}</div>
+                <div class="vibe-meter">
+                    <div class="meter-fill" style="width: ${data.score}%;"></div>
+                </div>
+            </div>
+            <div class="vibe-summary">"${data.summary}"</div>
+        `;
+    }
+    
+    // Update crowd widget with data
+    function updateCrowdWidget(data) {
+        const crowdContent = document.getElementById('crowd-content');
+        if (!crowdContent) return;
+        
+        let crowdHTML = '<div class="crowd-areas">';
+        
+        data.forEach(crowd => {
+            // Create the density indicators based on level
+            let densityHTML = '';
+            
+            if (crowd.level === 'high') {
+                densityHTML = '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>';
+            } else if (crowd.level === 'medium') {
+                densityHTML = '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>';
+            } else {
+                densityHTML = '<i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+            }
+            
+            crowdHTML += `
+                <div class="crowd-area">
+                    <div class="area-name">${crowd.area}</div>
+                    <div class="area-density ${crowd.level}">
+                        ${densityHTML}
+                    </div>
+                </div>
+            `;
+        });
+        
+        crowdHTML += '</div>';
+        crowdContent.innerHTML = crowdHTML;
+    }
+    
+    // Update news widget with data
+    function updateNewsWidget(data) {
+        const newsContent = document.getElementById('news-content');
+        if (!newsContent) return;
+        
+        let newsHTML = '';
+        
+        data.forEach(item => {
+            newsHTML += `
+                <div class="news-item">
+                    <div class="news-tag ${item.type}">${item.category}</div>
+                    <div class="news-headline">${item.headline}</div>
+                </div>
+            `;
+        });
+        
+        newsContent.innerHTML = newsHTML;
+    }
+    
+    // Update trending widget with data
+    function updateTrendingWidget(data) {
+        const trendingContent = document.getElementById('trending-content');
+        if (!trendingContent) return;
+        
+        let musicHTML = '';
+        data.music.forEach(track => {
+            musicHTML += `<li>${track}</li>`;
+        });
+        
+        let videosHTML = '';
+        data.videos.forEach(video => {
+            videosHTML += `<li>${video}</li>`;
+        });
+        
+        trendingContent.innerHTML = `
+            <div class="trending-section">
+                <h4><i class="fab fa-spotify"></i> Top Music</h4>
+                <ol class="trending-list">
+                    ${musicHTML}
+                </ol>
+            </div>
+            <div class="trending-section">
+                <h4><i class="fab fa-youtube"></i> Popular Videos</h4>
+                <ol class="trending-list">
+                    ${videosHTML}
+                </ol>
+            </div>
+        `;
+    }
+    
+    // Update tip widget with data
+    function updateTipWidget(data) {
+        const tipContent = document.getElementById('tip-content');
+        if (!tipContent) return;
+        
+        tipContent.innerHTML = `
+            <div class="tip-content">
+                <i class="fas fa-quote-left"></i>
+                <p>${data.tip}</p>
+                <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="tip-author">- ${data.author}</div>
+        `;
+    }
+    
+    // Handle vibe filter button clicks
+    function handleVibeFilter(e) {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        e.target.classList.add('active');
+        
+        // Get vibe type from button text
+        const vibeType = e.target.textContent.trim();
+        
+        // In a real implementation, this would filter destinations by vibe
+        console.log(`Filtering destinations by vibe: ${vibeType}`);
+        
+        // Show a temporary message to indicate filtering
+        const pulseDashboard = document.querySelector('.pulse-dashboard');
+        const message = document.createElement('div');
+        message.className = 'filter-message';
+        message.textContent = `Showing ${vibeType} destinations...`;
+        message.style.gridColumn = '1 / -1';
+        message.style.textAlign = 'center';
+        message.style.padding = '1rem';
+        message.style.backgroundColor = 'rgba(var(--primary-rgb), 0.1)';
+        message.style.borderRadius = '10px';
+        message.style.marginTop = '1rem';
+        
+        // Check if a message already exists and remove it
+        const existingMessage = document.querySelector('.filter-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Add the message after filters
+        pulseDashboard.appendChild(message);
+        
+        // Remove the message after 3 seconds
+        setTimeout(() => {
+            message.remove();
+        }, 3000);
     }
     
     // Initialize date pickers
@@ -133,7 +440,73 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Scroll to results
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update Local Pulse data based on destination
+            updateLocalPulseForDestination(searchData.destination);
         }, 1500);
+    }
+    
+    // Update Local Pulse data for the searched destination
+    function updateLocalPulseForDestination(destination) {
+        // In a real implementation, we would make API calls with the destination parameter
+        // For the demo, we'll update the widget headers with the destination name
+        
+        const widgets = document.querySelectorAll('.widget-header h3');
+        widgets.forEach(widget => {
+            const originalText = widget.textContent.split(' in ')[0];
+            widget.textContent = `${originalText} in ${destination}`;
+        });
+        
+        // Update page title to show we're viewing this destination
+        document.querySelector('.pulse-subtitle').textContent = 
+            `Real-time insights for ${destination}`;
+            
+        // Show a notification
+        showNotification(`Local Pulse updated for ${destination}`);
+    }
+    
+    // Show a temporary notification message
+    function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'pulse-notification';
+        notification.textContent = message;
+        
+        // Style the notification
+        Object.assign(notification.style, {
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            backgroundColor: 'var(--primary-color)',
+            color: 'white',
+            padding: '12px 20px',
+            borderRadius: '4px',
+            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.2)',
+            zIndex: '1000',
+            opacity: '0',
+            transform: 'translateY(20px)',
+            transition: 'opacity 0.3s ease, transform 0.3s ease'
+        });
+        
+        // Add to document
+        document.body.appendChild(notification);
+        
+        // Trigger animation
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateY(0)';
+        }, 10);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(20px)';
+            
+            // Remove from DOM after animation completes
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
     }
     
     // Generate mock results for demonstration
