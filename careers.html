@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at Way To Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main1.css">
+    <style>
+        .careers-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .careers-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .careers-search {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .careers-search input {
+            width: 70%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .careers-search button {
+            padding: 15px 30px;
+            background: #0071c2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .careers-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .category-card i {
+            font-size: 2em;
+            color: #0071c2;
+            margin-bottom: 15px;
+        }
+
+        .benefits-section {
+            background: #f5f5f5;
+            padding: 60px 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .benefit-card i {
+            font-size: 2.5em;
+            color: #0071c2;
+            margin-bottom: 20px;
+        }
+
+        .jobs-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-info h3 {
+            color: #0071c2;
+            margin-bottom: 10px;
+        }
+
+        .job-location {
+            color: #666;
+        }
+
+        .apply-btn {
+            padding: 10px 20px;
+            background: #0071c2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section with navigation bar -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Way To Home</div>
+            <div class="nav-links">
+                <a href="main1.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flightss.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="#"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="localattractions.html"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="Airport taxi.html"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#">USD</a>
+                <a href="login.html">Sign in</a>
+                <a href="signup.html" class="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="careers-hero">
+        <h1>Join Our Team</h1>
+        <p>Help us make it easier for everyone to experience the world</p>
+    </section>
+
+    <!-- Search Section -->
+    <div class="careers-search">
+        <input type="text" placeholder="Search for jobs by title, keyword, or location">
+        <button>Search Jobs</button>
+    </div>
+
+    <!-- Job Categories -->
+    <section class="careers-categories">
+        <div class="category-card">
+            <i class="fas fa-code"></i>
+            <h3>Technology</h3>
+            <p>Build the future of travel technology</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Business Development</h3>
+            <p>Drive our global growth strategy</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Design</h3>
+            <p>Create beautiful user experiences</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-headset"></i>
+            <h3>Customer Service</h3>
+            <p>Help customers around the world</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <h2 class="section-title">Why Work With Us?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-globe"></i>
+                <h3>Global Impact</h3>
+                <p>Make a difference in how millions of people experience travel</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Learning & Development</h3>
+                <p>Continuous learning opportunities and career growth</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-heart"></i>
+                <h3>Great Benefits</h3>
+                <p>Comprehensive healthcare, travel perks, and more</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Openings -->
+    <section class="jobs-section">
+        <h2 class="section-title">Current Openings</h2>
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Senior Software Engineer</h3>
+                <div class="job-location"><i class="fas fa-map-marker-alt"></i> Amsterdam, Netherlands</div>
+            </div>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+        <div class="job-card">
+            <div class="job-info">
+                <h3>UX Designer</h3>
+                <div class="job-location"><i class="fas fa-map-marker-alt"></i> London, UK</div>
+            </div>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Product Manager</h3>
+                <div class="job-location"><i class="fas fa-map-marker-alt"></i> New York, USA</div>
+            </div>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Data Scientist</h3>
+                <div class="job-location"><i class="fas fa-map-marker-alt"></i> Singapore</div>
+            </div>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-title">Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Resource Center</a></li>
+                    <li><a href="#">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal and Holiday Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Travel Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
+</body>
+</html>
