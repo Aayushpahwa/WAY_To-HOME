@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Way To Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main1.css">
+    <style>
+        .help-hero {
+            background-color: #003580;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .help-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .help-search {
+            max-width: 600px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .help-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .help-search button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #003580;
+            cursor: pointer;
+        }
+
+        .help-categories {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .help-category {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .help-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .help-category i {
+            font-size: 2em;
+            color: #003580;
+            margin-bottom: 15px;
+        }
+
+        .help-category h3 {
+            margin: 10px 0;
+            color: #003580;
+        }
+
+        .help-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .help-category li {
+            margin: 10px 0;
+        }
+
+        .help-category a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .help-category a:hover {
+            color: #003580;
+        }
+
+        .quick-links {
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .quick-links-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quick-links h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .quick-link-item {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .quick-link-item i {
+            color: #003580;
+            margin-bottom: 10px;
+        }
+
+        .contact-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .contact-options {
+            max-width: 800px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-option {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .contact-option i {
+            font-size: 2em;
+            color: #003580;
+            margin-bottom: 15px;
+        }
+
+        .contact-option h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section with navigation bar -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Way To Home</div>
+            <div class="nav-links">
+                <a href="main1.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flightss.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="#"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="localattractions.html"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="Airport taxi.html"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#">USD</a>
+                <a href="login.html">Sign in</a>
+                <a href="signup.html" class="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <section class="help-hero">
+        <h1>How can we help you?</h1>
+        <div class="help-search">
+            <input type="text" placeholder="Search help articles...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <!-- Help Categories -->
+    <section class="help-categories">
+        <div class="help-category">
+            <i class="fas fa-suitcase"></i>
+            <h3>Manage Your Booking</h3>
+            <ul>
+                <li><a href="#">Change or cancel your booking</a></li>
+                <li><a href="#">Add extras to your stay</a></li>
+                <li><a href="#">Print booking confirmation</a></li>
+                <li><a href="#">Contact property</a></li>
+            </ul>
+        </div>
+
+        <div class="help-category">
+            <i class="fas fa-credit-card"></i>
+            <h3>Payments & Refunds</h3>
+            <ul>
+                <li><a href="#">Payment methods</a></li>
+                <li><a href="#">Pricing & charges</a></li>
+                <li><a href="#">Refund status</a></li>
+                <li><a href="#">Currency conversion</a></li>
+            </ul>
+        </div>
+
+        <div class="help-category">
+            <i class="fas fa-user-circle"></i>
+            <h3>Your Account</h3>
+            <ul>
+                <li><a href="#">Account settings</a></li>
+                <li><a href="#">Rewards & benefits</a></li>
+                <li><a href="#">Email preferences</a></li>
+                <li><a href="#">Security & privacy</a></li>
+            </ul>
+        </div>
+
+        <div class="help-category">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Safety & Accessibility</h3>
+            <ul>
+                <li><a href="#">COVID-19 updates</a></li>
+                <li><a href="#">Safety measures</a></li>
+                <li><a href="#">Accessibility options</a></li>
+                <li><a href="#">Emergency contacts</a></li>
+            </ul>
+        </div>
+
+        <div class="help-category">
+            <i class="fas fa-globe"></i>
+            <h3>Travel Information</h3>
+            <ul>
+                <li><a href="#">Travel requirements</a></li>
+                <li><a href="#">Travel insurance</a></li>
+                <li><a href="#">Group bookings</a></li>
+                <li><a href="#">Business travel</a></li>
+            </ul>
+        </div>
+
+        <div class="help-category">
+            <i class="fas fa-comments"></i>
+            <h3>Property Partners</h3>
+            <ul>
+                <li><a href="#">List your property</a></li>
+                <li><a href="#">Partner help center</a></li>
+                <li><a href="#">Commission & payments</a></li>
+                <li><a href="#">Property policies</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="quick-links-container">
+            <h2>Quick Links</h2>
+            <div class="quick-links-grid">
+                <div class="quick-link-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Check-in Help</h4>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-ban"></i>
+                    <h4>Cancellation Policy</h4>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-wallet"></i>
+                    <h4>Payment Issues</h4>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h4>Directions</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Still Need Help?</h2>
+        <div class="contact-options">
+            <div class="contact-option">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Customer Service</h3>
+                <p>Contact our support team anytime</p>
+                <button class="btn">Contact Us</button>
+            </div>
+            <div class="contact-option">
+                <i class="fas fa-comments"></i>
+                <h3>Community Forum</h3>
+                <p>Get help from other travelers</p>
+                <button class="btn">Visit Forum</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-title">Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="helpCenter.html">Help Center</a></li>
+                    <li><a href="#">Safety Resource Center</a></li>
+                    <li><a href="#">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal and Holiday Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Travel Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
+</body>
+</html>
