@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation Options - Way To Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main1.css">
+    <style>
+        .cancellation-hero {
+            background: linear-gradient(rgba(0, 53, 128, 0.9), rgba(0, 53, 128, 0.9));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cancellation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cancellation-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 30px;
+        }
+
+        .cancellation-type {
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cancellation-type h3 {
+            color: #003580;
+            margin-bottom: 15px;
+        }
+
+        .cancellation-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .badge-free {
+            background: #ebf3ff;
+            color: #003580;
+        }
+
+        .badge-partial {
+            background: #fff6e6;
+            color: #825500;
+        }
+
+        .badge-non {
+            background: #ffebeb;
+            color: #cc0000;
+        }
+
+        .policy-details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .policy-list li:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: #003580;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #003580;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .cancellation-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section with navigation bar -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Way To Home</div>
+            <div class="nav-links">
+                <a href="main1.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flightss.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="car rentlas.html"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="localattractions.html"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="Airport taxi.html"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#">USD</a>
+                <a href="login.html">Sign in</a>
+                <a href="signup.html" class="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="cancellation-hero">
+        <h1>Cancellation Options</h1>
+        <p>Understanding our flexible booking policies</p>
+    </section>
+
+    <div class="cancellation-container">
+        <!-- Introduction Section -->
+        <section class="cancellation-section">
+            <h2>About Our Cancellation Policies</h2>
+            <p>At Way To Home, we understand that plans can change. That's why we offer various cancellation options to provide you with flexibility and peace of mind when booking your stay.</p>
+            
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> Important Notice</h3>
+                <p>Cancellation policies may vary depending on the property and the type of rate you book. Always check the specific conditions before making your reservation.</p>
+            </div>
+        </section>
+
+        <!-- Types of Cancellation Policies -->
+        <section class="cancellation-section">
+            <h2>Our Cancellation Policy Types</h2>
+
+            <div class="cancellation-type">
+                <span class="cancellation-badge badge-free">Free Cancellation</span>
+                <h3>Fully Flexible</h3>
+                <p>Maximum flexibility for your peace of mind</p>
+                <div class="policy-details">
+                    <ul class="policy-list">
+                        <li>Cancel up to 24 hours before check-in</li>
+                        <li>Receive a full refund</li>
+                        <li>No questions asked</li>
+                        <li>Best for uncertain travel plans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cancellation-type">
+                <span class="cancellation-badge badge-partial">Partial Refund</span>
+                <h3>Semi-Flexible</h3>
+                <p>Balance between flexibility and better rates</p>
+                <div class="policy-details">
+                    <ul class="policy-list">
+                        <li>Cancel up to 3 days before check-in</li>
+                        <li>Receive a partial refund (typically 50-75%)</li>
+                        <li>First night may be non-refundable</li>
+                        <li>Good for planned trips with some flexibility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cancellation-type">
+                <span class="cancellation-badge badge-non">Non-Refundable</span>
+                <h3>Non-Refundable</h3>
+                <p>Best rates for confident travelers</p>
+                <div class="policy-details">
+                    <ul class="policy-list">
+                        <li>No cancellation or changes allowed</li>
+                        <li>Lowest possible rates</li>
+                        <li>Full payment required at booking</li>
+                        <li>Ideal for sure travel plans</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Cancel Section -->
+        <section class="cancellation-section">
+            <h2>How to Cancel Your Booking</h2>
+            <p>Canceling your booking is simple and can be done in a few easy steps:</p>
+            
+            <ol style="margin-left: 20px; line-height: 1.6;">
+                <li>Sign in to your Way To Home account</li>
+                <li>Go to "My Bookings"</li>
+                <li>Select the booking you want to cancel</li>
+                <li>Click on "Cancel Booking"</li>
+                <li>Confirm your cancellation</li>
+            </ol>
+
+            <div class="info-box">
+                <h3><i class="fas fa-clock"></i> Processing Time</h3>
+                <p>Refunds are typically processed within 5-10 business days, depending on your payment method and financial institution.</p>
+            </div>
+        </section>
+
+        <!-- Special Circumstances -->
+        <section class="cancellation-section">
+            <h2>Special Circumstances</h2>
+            <p>We understand that extraordinary situations may require special consideration. Contact our customer service team if you need to cancel due to:</p>
+            
+            <ul class="policy-list">
+                <li>Natural disasters or severe weather conditions</li>
+                <li>Travel restrictions or government advisories</li>
+                <li>Medical emergencies (documentation may be required)</li>
+                <li>Other extenuating circumstances</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-title">Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="helpCenter.html">Help Center</a></li>
+                    <li><a href="#">Safety Resource Center</a></li>
+                    <li><a href="cancellationOptions.html">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal and Holiday Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Travel Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
+</body>
+</html>
