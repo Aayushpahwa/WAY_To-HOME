@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Attractions - Way To Home</title>
+    <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #006ce4;
+            --secondary-color: #0071c2;
+            --accent-color: #feba02;
+            --text-color: #262626;
+            --background-color: #f5f5f5;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            --hover-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: 15px 40px;
+            color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24.5px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .nav-links .register {
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+        }
+
+        .nav-links .register:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-color: var(--accent-color);
+        }
+
+        .nav-links .active, .nav-links a.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .city-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .city-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .city-section h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .city-section h2::before {
+            content: '\f3c5';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .city-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .attraction-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .attraction-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .attraction-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .attraction-name {
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-align: center;
+            background: white;
+            position: relative;
+        }
+
+        .attraction-name::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .attraction-details {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .attraction-details p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .attraction-details i {
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .booking-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .booking-btn:hover {
+            background: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .city-section {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+
+            .attractions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        .footer {
+            background: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="main1.html" class="logo">Way To Home</a>
+            <div class="nav-links">
+                <a href="main2.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flight.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="car rentlas.html"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="localattractions.html" class="active"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="Airport taxi.html"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                
+                
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Explore the <u><em>Timeless</em></u> treasures</h1>
+        <p>Explore the most iconic landmarks and hidden gems in India's major cities</p>
+    </section>
+
+    <div class="city-section">
+        <h2>Delhi</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <img src="https://thumbs.dreamstime.com/b/red-fort-delhi-india-red-fort-historic-fort-city-delhi-india-was-main-residence-emperors-138092261.jpg" alt="Red Fort">
+                <div class="attraction-name">Red Fort</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 4:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹500 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Netaji Subhash Marg, Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://s7ap1.scene7.com/is/image/incredibleindia/india-gate-delhi-1-attr-hero?qlt=82&ts=1727351922349" alt="India Gate">
+                <div class="attraction-name">India Gate</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rajpath, New Delhi</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1663229203856-8a363f07d881?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Qutub Minar">
+                <div class="attraction-name">Qutub Minar</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 7:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹550 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mehrauli, New Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://im.indiatimes.in/content/2017/Feb/lotus_temple_1485925747_725x725.jpg?w=400&h=267&cc=1&webp=1&q=75" alt="Lotus Temple">
+                <div class="attraction-name">Lotus Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:30 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lotus Temple Road, New Delhi</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ0pNw2Qq_Lm90NO0UC-A7GxVXUYwiZl_Nsw&s" alt="Humayun's Tomb">
+                <div class="attraction-name">Humayun's Tomb</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹550 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mathura Road, New Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="city-section">
+        <h2>Mumbai</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=400&q=80" alt="Gateway of India">
+                <div class="attraction-name">Gateway of India</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Apollo Bunder, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Tour</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Marine_Drive_Skyline.jpg" alt="Marine Drive">
+                <div class="attraction-name">Marine Drive</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Marine Drive, Mumbai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://images.pexels.com/photos/18125024/pexels-photo-18125024/free-photo-of-illuminated-historical-building-on-night-street.jpeg" alt="CST">
+                <div class="attraction-name">Chhatrapati Shivaji Terminus</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 (Heritage Museum: 3-5 PM)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free (Museum: ₹200)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Fort, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Museum Tour</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1663229203856-8a363f07d881" alt="Elephanta Caves">
+                <div class="attraction-name">Elephanta Caves</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:30 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹40 (Indians), ₹600 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Elephanta Island, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Ferry & Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://travelogyindia.b-cdn.net/storage/app/upload/juhu-beach-mumbai-1.jpg" alt="Juhu Beach">
+                <div class="attraction-name">Juhu Beach</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Juhu, Mumbai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="city-section">
+        <h2>Bangalore</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2" alt="Lalbagh">
+                <div class="attraction-name">Lalbagh Botanical Garden</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 7:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹20 (Indians), ₹100 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lalbagh Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://bangaloretourism.in/images/v2/headers/bangalore-palace-timings-entry-fee-bangalore-tourism-header-cr-amit-rawat.jpg" alt="Bangalore Palace">
+                <div class="attraction-name">Bangalore Palace</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10:00 AM - 5:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹230 (Indians), ₹460 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Palace Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEK4dBNZvriAsvyofgF98IWjsJ-O8XyDdKTA&s" alt="Cubbon Park">
+                <div class="attraction-name">Cubbon Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kasturba Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://static.toiimg.com/thumb/111303120/Leopard-at-Bannerghatta-Biological-Park.jpg?width=1200&height=900" alt="Bannerghatta National Park">
+                <div class="attraction-name">Bannerghatta National Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹80 (Indians), ₹400 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bannerghatta Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Safari Tour</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9wCC7DUgu5t0c-MZpAaBhKGTjE8LhxA15Qw&s" alt="ISKCON Temple">
+                <div class="attraction-name">ISKCON Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 4:15 AM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Hare Krishna Hill, Bangalore</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="city-section">
+        <h2>Kolkata</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=400&q=80" alt="Victoria Memorial">
+                <div class="attraction-name">Victoria Memorial</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10 AM - 5 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30 (Indians), ₹200 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Queens Way, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1536421469767-80559bb6f5e1" alt="Howrah Bridge">
+                <div class="attraction-name">Howrah Bridge</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Howrah Bridge, Kolkata</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://miro.medium.com/v2/resize:fit:864/1*gHx_YkInvMk9aKfvLBpf1Q.jpeg" alt="Indian Museum">
+                <div class="attraction-name">Indian Museum</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10:00 AM - 5:00 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹20 (Indians), ₹500 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Park Street Area, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR8nf_-RPF5-kQKquJmVuxFDhlo4z7To4jPw&s" alt="Eco Park">
+                <div class="attraction-name">Eco Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 2:30 PM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Town, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfpwt5e8cZrolokR4U8VsSi7q4P_ZNRuSb5Q&s" alt="Science City">
+                <div class="attraction-name">Science City</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 8:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹50 (Basic), ₹150 (All Access)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> JBS Haldane Avenue, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="city-section">
+        <h2>Chennai</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZkaRZWim0y-t6dFsvfq-6vmsBZdveYtAwVQ&s" alt="Marina Beach">
+                <div class="attraction-name">Marina Beach</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Marina Beach Road, Chennai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAPDm5XpECjej_ujsNjQBWN_aljETikGx92g&s" alt="Fort St. George">
+                <div class="attraction-name">Fort St. George</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:00 PM (Closed Fridays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹15 (Indians), ₹200 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Fort St George, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://data.agatetravel.com/images/photogallery/2021/kapaleeshwarar-temple-chennai.jpg" alt="Kapaleeshwarar Temple">
+                <div class="attraction-name">Kapaleeshwarar Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 5:30 AM - 12:00 PM, 4:00 PM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mylapore, Chennai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM1f29PqAxFrPTUpr3ibsfoy_eMqJHHOstnQ&s" alt="Government Museum">
+                <div class="attraction-name">Government Museum</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:00 PM (Closed Fridays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹15 (Indians), ₹250 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pantheon Road, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuhZuZdWpO0TmtXUAvew3hg9eRUV5HllgxZQ&s" alt="Guindy National Park">
+                <div class="attraction-name">Guindy National Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:30 PM (Closed Tuesdays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30 (Adults), ₹15 (Children)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Guindy, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="city-section">
+        <h2>International Destinations</h2>
+        <div class="attractions-grid">
+            <!-- France -->
+            <div class="attraction-card">
+                <img src="https://media.istockphoto.com/id/1345426734/photo/eiffel-tower-paris-river-seine-sunset-twilight-france.jpg?s=612x612&w=0&k=20&c=I5rAH5d_-Yyag8F0CKzk9vzMr_1rgkAASGTE11YMh9A=" alt="Eiffel Tower">
+                <div class="attraction-name">Eiffel Tower, France</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 12:45 AM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: €26.10 (Adults), €13.10 (Youth)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Champ de Mars, Paris</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+
+            <!-- UAE -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5" alt="Burj Khalifa">
+                <div class="attraction-name">Burj Khalifa, UAE</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10:00 AM - 10:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: AED 149 (Adults), AED 114 (Children)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Downtown Dubai, Dubai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
+            </div>
+
+            <!-- USA -->
+            <div class="attraction-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/XsbvTN6PRi6PZtgEGvRsiE.jpg" alt="Statue of Liberty">
+                <div class="attraction-name">Statue of Liberty, USA</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 8:30 AM - 4:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: $23.50 (Adults), $12 (Children)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Liberty Island, New York</p>
+                </div>
+                <button class="booking-btn">Book Ferry & Tickets</button>
+            </div>
+
+            <!-- Australia -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1624138784614-87fd1b6528f8" alt="Sydney Opera House">
+                <div class="attraction-name">Sydney Opera House, Australia</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: AUD 43 (Tour), Free (Exterior)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bennelong Point, Sydney</p>
+                </div>
+                <button class="booking-btn">Book Tour</button>
+            </div>
+
+            <!-- Italy -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5" alt="Colosseum">
+                <div class="attraction-name">Colosseum, Italy</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 8:30 AM - 7:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: €16 (Adults), Free (Under 18)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Piazza del Colosseo, Rome</p>
+                </div>
+                <button class="booking-btn">Book Guided Tour</button>
+            </div>
+
+            <!-- Japan -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9" alt="Mount Fuji">
+                <div class="attraction-name">Mount Fuji, Japan</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: July-August (Climbing Season)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ¥1000 (Climbing Fee)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Yamanashi Prefecture, Japan</p>
+                </div>
+                <button class="booking-btn">Book Climbing Tour</button>
+            </div>
+
+            <!-- Greece -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077" alt="Santorini">
+                <div class="attraction-name">Santorini, Greece</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: Best Visit: April-October</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free (Tours from €40)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cyclades Islands, Greece</p>
+                </div>
+                <button class="booking-btn">Book Island Tour</button>
+            </div>
+
+            <!-- Egypt -->
+            <div class="attraction-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaMbr5GUwjG_jaHGshH_n8Jy-ahibnUKdqLQ&s" alt="Great Pyramids">
+                <div class="attraction-name">Great Pyramids, Egypt</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 8:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: EGP 200 (Adults), EGP 100 (Students)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Giza, Egypt</p>
+                </div>
+                <button class="booking-btn">Book Guided Tour</button>
+            </div>
+
+            <!-- China -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d" alt="Great Wall">
+                <div class="attraction-name">Great Wall of China</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 7:30 AM - 5:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ¥40-65 (Depending on section)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mutianyu, Beijing</p>
+                </div>
+                <button class="booking-btn">Book Wall Tour</button>
+            </div>
+
+            <!-- Brazil -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325" alt="Christ the Redeemer">
+                <div class="attraction-name">Christ the Redeemer, Brazil</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 8:00 AM - 7:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: R$70 (Adults)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Corcovado Mountain, Rio de Janeiro</p>
+                </div>
+                <button class="booking-btn">Book Visit</button>
+            </div>
+
+            <!-- Germany -->
+            <div class="attraction-card">
+                <img src="https://artandtheology.org/wp-content/uploads/2023/07/cologne-cathedral-at-night_reduced-1.jpg" alt="Cologne Cathedral">
+                <div class="attraction-name">Cologne Cathedral, Germany</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 9:00 PM (Mon-Sun)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free (Tower: €5)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Domkloster, Cologne</p>
+                </div>
+                <button class="booking-btn">Book Tower Tour</button>
+            </div>
+
+            <!-- Switzerland -->
+            <div class="attraction-card">
+                <img src="https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b" alt="Matterhorn">
+                <div class="attraction-name">Matterhorn, Switzerland</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: Cable Car: 8:30 AM - 4:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: CHF 87 (Cable Car Round Trip)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Zermatt, Switzerland</p>
+                </div>
+                <button class="booking-btn">Book Mountain Experience</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="helpCenter.html">Help Center</a></li>
+                    <li><a href="safetyResourceCenter.html">Safety Information</a></li>
+                    <li><a href="cancellationOptions.html">Cancellation Options</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
+</body>
+</html>
