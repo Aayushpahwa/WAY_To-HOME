@@ -725,12 +725,56 @@ body {
 /* Local Pulse Dashboard styles */
 .local-pulse {
     padding: 4rem 2rem;
-    background-color: var(--background-light);
+    background-color: var(--secondary-color);
+}
+
+/* Pulse logo styling */
+.pulse-logo {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 12px;
+    position: relative;
+}
+
+.pulse-logo i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.pulse-line {
+    position: absolute;
+    height: 2px;
+    width: 0;
+    background-color: white;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        width: 0;
+        left: 0;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+        left: 0;
+        opacity: 0;
+    }
 }
 
 .pulse-subtitle {
     text-align: center;
-    color: var(--text-secondary);
+    color: var(--light-text);
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }

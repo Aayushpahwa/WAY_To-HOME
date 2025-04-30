@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Top Public Attractions in Major Indian Cities</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Attractions - Way To Home</title>
+    <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --text-color: #2d3436;
-            --background-color: #f9f9f9;
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            --hover-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            --primary-color: #003580;
+            --secondary-color: #0071c2;
+            --accent-color: #feba02;
+            --text-color: #262626;
+            --background-color: #f5f5f5;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            --hover-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --white: #ffffff;
         }
 
         * {
@@ -29,43 +34,85 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+            padding: 15px 40px;
+            color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24.5px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .nav-links .register {
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+        }
+
+        .nav-links .register:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-color: var(--accent-color);
+        }
+
+        .nav-links .active, .nav-links a.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 8rem 2rem 4rem;
             text-align: center;
             color: white;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 3rem;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?auto=format&fit=crop&w=2000&q=80') center/cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+        .hero h1 {
+            font-size: 2.8rem;
             margin-bottom: 1rem;
+            font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .subtitle {
+        .hero p {
             font-size: 1.2rem;
-            font-weight: 300;
             max-width: 600px;
             margin: 0 auto;
+            opacity: 0.9;
         }
 
         .city-section {
@@ -75,7 +122,6 @@
             background: white;
             border-radius: 15px;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
         }
 
         .city-section:hover {
@@ -83,11 +129,20 @@
         }
 
         .city-section h2 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
+            font-size: 2rem;
+            color: var(--text-color);
             margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .city-section h2::before {
+            content: '\f3c5';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-right: 1rem;
+            font-size: 1.5rem;
         }
 
         .city-section h2::after {
@@ -109,11 +164,11 @@
         }
 
         .attraction-card {
-            background: white;
             border-radius: 12px;
             overflow: hidden;
+            background: white;
             box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
 
@@ -140,27 +195,66 @@
             color: var(--text-color);
             text-align: center;
             background: white;
+            position: relative;
         }
 
-        .attraction-card::after {
+        .attraction-name::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            background: var(--secondary-color);
+            border-radius: 2px;
         }
 
-        .attraction-card:hover::after {
-            transform: scaleX(1);
+        .attraction-details {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .attraction-details p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .attraction-details i {
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        .booking-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .booking-btn:hover {
+            background: var(--primary-color);
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
             }
 
             .city-section {
@@ -174,169 +268,393 @@
             }
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
+        .footer {
+            background: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
+        }
 
-            .subtitle {
-                font-size: 1rem;
-            }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
 
-            .city-section h2 {
-                font-size: 2rem;
-            }
+        .footer-col h3 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
 
-            .attraction-name {
-                padding: 1rem;
-                font-size: 1.1rem;
-            }
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="header-content">
-            <h1>Top Public Attractions in Major Indian Cities</h1>
-            <p class="subtitle">Discover the rich cultural heritage and modern marvels of India's most vibrant cities</p>
-        </div>
+        <nav class="nav">
+            <a href="main1.html" class="logo">Way To Home</a>
+            <div class="nav-links">
+                <a href="main1.html"><i class="fas fa-bed"></i> Stays</a>
+                <a href="flightss.html"><i class="fas fa-plane"></i> Flights</a>
+                <a href="car rentlas.html"><i class="fas fa-car"></i> Car Rentals</a>
+                <a href="localattractions.html" class="active"><i class="fas fa-umbrella-beach"></i> Attractions</a>
+                <a href="Airport taxi.html"><i class="fas fa-taxi"></i> Airport Taxis</a>
+                <a href="#"><i class="fas fa-dollar-sign"></i> USD</a>
+                <a href="login.html"><i class="fas fa-user"></i> Sign in</a>
+                <a href="signup.html" class="register">Register</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- DELHI -->
+    <section class="hero">
+        <h1>Discover Amazing Local Attractions</h1>
+        <p>Explore the most iconic landmarks and hidden gems in India's major cities</p>
+    </section>
+
     <div class="city-section">
         <h2>Delhi</h2>
         <div class="attractions-grid">
             <div class="attraction-card">
                 <img src="https://thumbs.dreamstime.com/b/red-fort-delhi-india-red-fort-historic-fort-city-delhi-india-was-main-residence-emperors-138092261.jpg" alt="Red Fort">
                 <div class="attraction-name">Red Fort</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 4:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹500 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Netaji Subhash Marg, Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://s7ap1.scene7.com/is/image/incredibleindia/india-gate-delhi-1-attr-hero?qlt=82&ts=1727351922349" alt="India Gate">
                 <div class="attraction-name">India Gate</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rajpath, New Delhi</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
                 <img src="https://images.unsplash.com/photo-1663229203856-8a363f07d881?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Qutub Minar">
                 <div class="attraction-name">Qutub Minar</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 7:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹550 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mehrauli, New Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://im.indiatimes.in/content/2017/Feb/lotus_temple_1485925747_725x725.jpg?w=400&h=267&cc=1&webp=1&q=75" alt="Lotus Temple">
                 <div class="attraction-name">Lotus Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:30 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lotus Temple Road, New Delhi</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
-                <img src="https://s7ap1.scene7.com/is/image/incredibleindia/humayuns-tomb-delhi-3-musthead-hero?qlt=82&ts=1727352134370" alt="Humayun's Tomb">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ0pNw2Qq_Lm90NO0UC-A7GxVXUYwiZl_Nsw&s" alt="Humayun's Tomb">
                 <div class="attraction-name">Humayun's Tomb</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹35 (Indians), ₹550 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mathura Road, New Delhi</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
         </div>
     </div>
 
-    <!-- MUMBAI -->
     <div class="city-section">
         <h2>Mumbai</h2>
         <div class="attractions-grid">
             <div class="attraction-card">
                 <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=400&q=80" alt="Gateway of India">
                 <div class="attraction-name">Gateway of India</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Apollo Bunder, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Tour</button>
             </div>
             <div class="attraction-card">
-                <img src="https://media.istockphoto.com/id/1008831236/photo/panoramic-view-of-marine-drive-at-dusk-mumbai-india.jpg?s=612x612&w=0&k=20&c=gZ_wmR5bWHCnbeGsXaXxPcv1XTmfGsYVcrzNzIr-aOY=" alt="Marine Drive">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Marine_Drive_Skyline.jpg" alt="Marine Drive">
                 <div class="attraction-name">Marine Drive</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Marine Drive, Mumbai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
-                <img src="https://images.pexels.com/photos/18125024/pexels-photo-18125024/free-photo-of-illuminated-historical-building-on-night-street.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Chhatrapati Shivaji Maharaj Terminus">
-                <div class="attraction-name">Chhatrapati Shivaji Maharaj Terminus</div>
+                <img src="https://images.pexels.com/photos/18125024/pexels-photo-18125024/free-photo-of-illuminated-historical-building-on-night-street.jpeg" alt="CST">
+                <div class="attraction-name">Chhatrapati Shivaji Terminus</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 (Heritage Museum: 3-5 PM)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free (Museum: ₹200)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Fort, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Museum Tour</button>
             </div>
             <div class="attraction-card">
-                <img src="data:image/jpeg;base64,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" alt="Elephanta Caves">
+                <img src="https://images.unsplash.com/photo-1663229203856-8a363f07d881" alt="Elephanta Caves">
                 <div class="attraction-name">Elephanta Caves</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:30 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹40 (Indians), ₹600 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Elephanta Island, Mumbai</p>
+                </div>
+                <button class="booking-btn">Book Ferry & Tickets</button>
             </div>
             <div class="attraction-card">
-                <img src="https://s7ap1.scene7.com/is/image/incredibleindia/juhu-beach-mumbai-maharashtra-1-musthead-hero?qlt=82&ts=1727355340209" alt="Juhu Beach">
+                <img src="https://travelogyindia.b-cdn.net/storage/app/upload/juhu-beach-mumbai-1.jpg" alt="Juhu Beach">
                 <div class="attraction-name">Juhu Beach</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Juhu, Mumbai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
         </div>
     </div>
 
-    <!-- BANGALORE -->
     <div class="city-section">
         <h2>Bangalore</h2>
         <div class="attractions-grid">
             <div class="attraction-card">
-                <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=400&q=80" alt="Lalbagh Botanical Garden">
+                <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2" alt="Lalbagh">
                 <div class="attraction-name">Lalbagh Botanical Garden</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 7:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹20 (Indians), ₹100 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lalbagh Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://bangaloretourism.in/images/v2/headers/bangalore-palace-timings-entry-fee-bangalore-tourism-header-cr-amit-rawat.jpg" alt="Bangalore Palace">
                 <div class="attraction-name">Bangalore Palace</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10:00 AM - 5:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹230 (Indians), ₹460 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Palace Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEK4dBNZvriAsvyofgF98IWjsJ-O8XyDdKTA&s" alt="Cubbon Park">
                 <div class="attraction-name">Cubbon Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 6:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kasturba Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
                 <img src="https://static.toiimg.com/thumb/111303120/Leopard-at-Bannerghatta-Biological-Park.jpg?width=1200&height=900" alt="Bannerghatta National Park">
                 <div class="attraction-name">Bannerghatta National Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹80 (Indians), ₹400 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bannerghatta Road, Bangalore</p>
+                </div>
+                <button class="booking-btn">Book Safari Tour</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9wCC7DUgu5t0c-MZpAaBhKGTjE8LhxA15Qw&s" alt="ISKCON Temple">
                 <div class="attraction-name">ISKCON Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 4:15 AM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Hare Krishna Hill, Bangalore</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
         </div>
     </div>
 
-    <!-- KOLKATA -->
     <div class="city-section">
         <h2>Kolkata</h2>
         <div class="attractions-grid">
             <div class="attraction-card">
                 <img src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=400&q=80" alt="Victoria Memorial">
                 <div class="attraction-name">Victoria Memorial</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10 AM - 5 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30 (Indians), ₹200 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Queens Way, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
-                <img src="https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG93cmFoJTIwYnJpZGdlfGVufDB8fDB8fHww" alt="Howrah Bridge">
+                <img src="https://images.unsplash.com/photo-1536421469767-80559bb6f5e1" alt="Howrah Bridge">
                 <div class="attraction-name">Howrah Bridge</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Howrah Bridge, Kolkata</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
                 <img src="https://miro.medium.com/v2/resize:fit:864/1*gHx_YkInvMk9aKfvLBpf1Q.jpeg" alt="Indian Museum">
                 <div class="attraction-name">Indian Museum</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 10:00 AM - 5:00 PM (Closed Mondays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹20 (Indians), ₹500 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Park Street Area, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR8nf_-RPF5-kQKquJmVuxFDhlo4z7To4jPw&s" alt="Eco Park">
                 <div class="attraction-name">Eco Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 2:30 PM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Town, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfpwt5e8cZrolokR4U8VsSi7q4P_ZNRuSb5Q&s" alt="Science City">
                 <div class="attraction-name">Science City</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 8:00 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹50 (Basic), ₹150 (All Access)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> JBS Haldane Avenue, Kolkata</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
         </div>
     </div>
 
-    <!-- CHENNAI -->
     <div class="city-section">
         <h2>Chennai</h2>
         <div class="attractions-grid">
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZkaRZWim0y-t6dFsvfq-6vmsBZdveYtAwVQ&s" alt="Marina Beach">
                 <div class="attraction-name">Marina Beach</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 24/7 Open</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Marina Beach Road, Chennai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAPDm5XpECjej_ujsNjQBWN_aljETikGx92g&s" alt="Fort St. George">
                 <div class="attraction-name">Fort St. George</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:00 PM (Closed Fridays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹15 (Indians), ₹200 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Fort St George, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://data.agatetravel.com/images/photogallery/2021/kapaleeshwarar-temple-chennai.jpg" alt="Kapaleeshwarar Temple">
                 <div class="attraction-name">Kapaleeshwarar Temple</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 5:30 AM - 12:00 PM, 4:00 PM - 8:30 PM</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: Free</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mylapore, Chennai</p>
+                </div>
+                <button class="booking-btn">Plan Visit</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM1f29PqAxFrPTUpr3ibsfoy_eMqJHHOstnQ&s" alt="Government Museum">
                 <div class="attraction-name">Government Museum</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:30 AM - 5:00 PM (Closed Fridays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹15 (Indians), ₹250 (Foreigners)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pantheon Road, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
             <div class="attraction-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuhZuZdWpO0TmtXUAvew3hg9eRUV5HllgxZQ&s" alt="Guindy National Park">
                 <div class="attraction-name">Guindy National Park</div>
+                <div class="attraction-details">
+                    <p><i class="far fa-clock"></i> Hours: 9:00 AM - 5:30 PM (Closed Tuesdays)</p>
+                    <p><i class="fas fa-ticket-alt"></i> Entry: ₹30 (Adults), ₹15 (Children)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Guindy, Chennai</p>
+                </div>
+                <button class="booking-btn">Book Tickets</button>
             </div>
         </div>
     </div>
 
-    <!-- Add more cities in the same format if needed -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Way To Home</h3>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="#">Partner Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Information</a></li>
+                    <li><a href="#">Cancellation Options</a></li>
+                    <li><a href="#">COVID-19 Response</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="country.html">Countries</a></li>
+                    <li><a href="regions.html">Regions</a></li>
+                    <li><a href="city.html">Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>For Travelers</h3>
+                <ul class="footer-links">
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="season-and-holiday.html">Seasonal Deals</a></li>
+                    <li><a href="article.html">Travel Articles</a></li>
+                    <li><a href="comm.html">Communities</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Way To Home. All rights reserved
+        </div>
+    </footer>
 </body>
 </html>
