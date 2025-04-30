@@ -407,54 +407,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle vibe filter button clicks
     function handleVibeFilter(e) {
+        const vibeType = e.target.dataset.vibe;
+        if (!vibeType) return;
+
         // Remove active class from all buttons
-        filterButtons.forEach(btn => {
-            btn.classList.remove('active');
-        });
+        filterButtons.forEach(btn => btn.classList.remove('active'));
         
         // Add active class to clicked button
         e.target.classList.add('active');
         
-        // Get vibe type from button text
-        const vibeType = e.target.textContent.trim();
-        
-        // In a real implementation, this would filter destinations by vibe
-        console.log(`Filtering destinations by vibe: ${vibeType}`);
-        
-        // Show a temporary message to indicate filtering
-        const pulseDashboard = document.querySelector('.pulse-dashboard');
-        const message = document.createElement('div');
-        message.className = 'filter-message';
-        message.textContent = `Showing ${vibeType} destinations...`;
-        message.style.gridColumn = '1 / -1';
-        message.style.textAlign = 'center';
-        message.style.padding = '1rem';
-        message.style.backgroundColor = 'rgba(var(--primary-rgb), 0.1)';
-        message.style.borderRadius = '10px';
-        message.style.marginTop = '1rem';
-        
-        // Check if a message already exists and remove it
-        const existingMessage = document.querySelector('.filter-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-        
-        // Add the message after filters
-        pulseDashboard.appendChild(message);
-        
-        // Remove the message after 3 seconds
-        setTimeout(() => {
-            message.remove();
-        }, 3000);
+        // Show destinations for the selected vibe
+        showDestinations(vibeType);
     }
-    
+
     // Function to display destinations for selected vibe
     function showDestinations(vibe) {
         const container = document.querySelector('.vibe-destinations');
-        const destinations = destinationsByVibe[vibe];
+        if (!container) return;
         
-        container.innerHTML = destinations.map(dest => `
-            <div class="vibe-destination-card">
+        const destinations = destinationsByVibe[vibe.toLowerCase()];
+        if (!destinations) return;
+        
+        // Clear previous destinations
+        container.innerHTML = '';
+        
+        // Create and append destination cards
+        destinations.forEach(dest => {
+            const card = document.createElement('div');
+            card.className = 'vibe-destination-card';
+            card.innerHTML = `
                 <img src="${dest.image}" alt="${dest.name}">
                 <div class="vibe-destination-info">
                     <h3 class="vibe-destination-name">${dest.name}</h3>
@@ -463,26 +444,84 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${dest.tags.map(tag => `<span class="vibe-tag">${tag}</span>`).join('')}
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+            container.appendChild(card);
+        });
+
+        // Add styles if not already present
+        const style = document.createElement('style');
+        style.textContent = `
+            .vibe-destinations {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                padding: 2rem;
+                margin-top: 2rem;
+            }
+            .vibe-destination-card {
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            .vibe-destination-card:hover {
+                transform: translateY(-5px);
+            }
+            .vibe-destination-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+            .vibe-destination-info {
+                padding: 1.5rem;
+            }
+            .vibe-destination-name {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            .vibe-destination-desc {
+                color: #666;
+                margin-bottom: 1rem;
+            }
+            .vibe-destination-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .vibe-tag {
+                background: #f0f0f0;
+                padding: 0.25rem 0.75rem;
+                border-radius: 20px;
+                font-size: 0.875rem;
+                color: #444;
+            }
+        `;
+        if (!document.querySelector('style')) {
+            document.head.appendChild(style);
+        }
     }
-    
-    // Event listeners for filter buttons
+
+    // Function to scroll destinations horizontally
+    function scrollDestinations(direction) {
+        const container = document.querySelector('.vibe-destinations');
+        const scrollAmount = 300; // Width of one card
+        container.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    // Initialize vibe filters
     document.addEventListener('DOMContentLoaded', () => {
         const filterButtons = document.querySelectorAll('.filter-btn');
         
         // Show party destinations by default
         showDestinations('party');
         
+        // Add click event listeners to filter buttons
         filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                // Show destinations for selected vibe
-                showDestinations(button.dataset.vibe);
-            });
+            button.addEventListener('click', handleVibeFilter);
         });
     });
     
