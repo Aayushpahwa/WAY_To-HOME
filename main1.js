@@ -15,6 +15,110 @@ document.addEventListener('DOMContentLoaded', function() {
     const pulseWidgets = document.querySelectorAll('.pulse-widget');
     const filterButtons = document.querySelectorAll('.filter-btn');
     
+    // Destination data organized by vibes
+    const destinationsByVibe = {
+        party: [
+            {
+                name: "Goa, India",
+                image: "https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3",
+                description: "Beach parties and vibrant nightlife",
+                tags: ["Beaches", "Clubs", "Nightlife"]
+            },
+            {
+                name: "Bangkok, Thailand",
+                image: "https://images.unsplash.com/photo-1583405794327-4c8c9b8a2e89",
+                description: "Energetic city with amazing nightlife",
+                tags: ["Street Food", "Markets", "Nightlife"]
+            },
+            {
+                name: "Ibiza, Spain",
+                image: "https://images.unsplash.com/photo-1531846802986-4942a5c3dd08",
+                description: "World-famous party destination",
+                tags: ["Beach Clubs", "DJs", "Parties"]
+            }
+        ],
+        relax: [
+            {
+                name: "Kerala, India",
+                image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944",
+                description: "Serene backwaters and ayurvedic retreats",
+                tags: ["Backwaters", "Spa", "Nature"]
+            },
+            {
+                name: "Maldives",
+                image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8",
+                description: "Pristine beaches and luxury resorts",
+                tags: ["Beach", "Luxury", "Peace"]
+            },
+            {
+                name: "Bali, Indonesia",
+                image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4",
+                description: "Tropical paradise with spiritual retreats",
+                tags: ["Temples", "Yoga", "Nature"]
+            }
+        ],
+        romantic: [
+            {
+                name: "Udaipur, India",
+                image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66",
+                description: "City of lakes and palaces",
+                tags: ["Lakes", "Palaces", "Culture"]
+            },
+            {
+                name: "Paris, France",
+                image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+                description: "The city of love",
+                tags: ["Architecture", "Food", "Art"]
+            },
+            {
+                name: "Venice, Italy",
+                image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0",
+                description: "Romantic canals and history",
+                tags: ["Canals", "History", "Romance"]
+            }
+        ],
+        adventure: [
+            {
+                name: "Rishikesh, India",
+                image: "https://images.unsplash.com/photo-1544033527-b192daee1f5b",
+                description: "Adventure sports capital of India",
+                tags: ["Rafting", "Yoga", "Mountains"]
+            },
+            {
+                name: "New Zealand",
+                image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3",
+                description: "Ultimate adventure destination",
+                tags: ["Bungee", "Hiking", "Nature"]
+            },
+            {
+                name: "Costa Rica",
+                image: "https://images.unsplash.com/photo-1590098563176-d6c9e96fb00f",
+                description: "Tropical adventures",
+                tags: ["Jungle", "Wildlife", "Surfing"]
+            }
+        ],
+        cultural: [
+            {
+                name: "Varanasi, India",
+                image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc",
+                description: "Spiritual capital of India",
+                tags: ["Temples", "Ghats", "History"]
+            },
+            {
+                name: "Kyoto, Japan",
+                image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e",
+                description: "Traditional Japanese culture",
+                tags: ["Temples", "Gardens", "Tea"]
+            },
+            {
+                name: "Rome, Italy",
+                image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5",
+                description: "Ancient history and art",
+                tags: ["History", "Art", "Food"]
+            }
+        ]
+    };
+    
     // Initialize the application
     initApp();
     
@@ -343,6 +447,44 @@ document.addEventListener('DOMContentLoaded', function() {
             message.remove();
         }, 3000);
     }
+    
+    // Function to display destinations for selected vibe
+    function showDestinations(vibe) {
+        const container = document.querySelector('.vibe-destinations');
+        const destinations = destinationsByVibe[vibe];
+        
+        container.innerHTML = destinations.map(dest => `
+            <div class="vibe-destination-card">
+                <img src="${dest.image}" alt="${dest.name}">
+                <div class="vibe-destination-info">
+                    <h3 class="vibe-destination-name">${dest.name}</h3>
+                    <p class="vibe-destination-desc">${dest.description}</p>
+                    <div class="vibe-destination-tags">
+                        ${dest.tags.map(tag => `<span class="vibe-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Event listeners for filter buttons
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        // Show party destinations by default
+        showDestinations('party');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Show destinations for selected vibe
+                showDestinations(button.dataset.vibe);
+            });
+        });
+    });
     
     // Initialize date pickers
     function initializeDatePickers() {
@@ -747,4 +889,4 @@ document.addEventListener('DOMContentLoaded', function() {
             searchBtn.style.width = 'auto';
         }
     }
-}); 
+});
